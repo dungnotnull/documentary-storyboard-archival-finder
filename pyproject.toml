@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "documentary-storyboard-archival-finder"
+version = "0.1.0"
+description = "Claude skill harness for documentary storyboards and rights-cleared archival footage."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Idea 227 Contributors"}
+]
+keywords = ["documentary", "storyboard", "archival footage", "creative commons", "public domain"]
+dependencies = [
+    "requests>=2.28.0",
+    "beautifulsoup4>=4.11.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+docu-knowledge-update = "tools.knowledge_updater:main"
+
+[tool.setuptools]
+packages = ["tools"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tools"]
+addopts = "-v"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I"]
